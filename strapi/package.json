@@ -1,0 +1,38 @@
+{
+  "name": "strapi",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A Strapi application",
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "license": "MIT",
+  "scripts": {
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@strapi/plugin-cloud": "4.22.1",
+    "@strapi/plugin-i18n": "4.22.1",
+    "@strapi/plugin-users-permissions": "4.22.1",
+    "@strapi/strapi": "4.22.1",
+    "pg": "8.8.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-router-dom": "5.3.4",
+    "styled-components": "5.3.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.13.2",
+    "eslint": "^8",
+    "eslint-plugin-react": "^7.34.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.6"
+  },
+  "strapi": {
+    "uuid": "7a25c743-a7fb-47bf-a4af-f356895af79d"
+  }
+}
