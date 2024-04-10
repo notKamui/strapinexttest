@@ -1,25 +1,25 @@
 'use server'
 
 import { ofetch } from 'ofetch'
+import type { Category, CategoryDetail } from '@/model/category'
 import type { Restaurant, RestaurantDetail } from '@/model/restaurant'
-import type { StapiPagination, StrapiResponse } from '@/model/strapi'
+import type { StrapiPagination, StrapiResponse } from '@/model/strapi'
 
 const $fetch = ofetch.create({
   baseURL: 'http://localhost:1337/api',
 })
 
 export async function getRestaurants() {
-  return $fetch<StrapiResponse<Restaurant[], StapiPagination>>('/restaurants')
+  return $fetch<StrapiResponse<Restaurant[], StrapiPagination>>('/restaurants')
 }
 
-export async function getRestaurantById<
-  IncludeCategory extends true | false = false,
-  Response = IncludeCategory extends true ? RestaurantDetail : Restaurant,
->(
+export async function getRestaurantById(id: number, withCategories?: boolean): Promise<StrapiResponse<Restaurant>>
+export async function getRestaurantById(id: number, withCategories: true): Promise<StrapiResponse<RestaurantDetail>>
+export async function getRestaurantById(
   id: number,
-  withCategories?: IncludeCategory,
+  withCategories = false,
 ) {
-  return await $fetch<StrapiResponse<Response>>(`/restaurants/${id}`, {
+  return await $fetch(`/restaurants/${id}`, {
     params: withCategories
       ? {
           populate: 'categories',
@@ -29,17 +29,16 @@ export async function getRestaurantById<
 }
 
 export async function getCategories() {
-  return $fetch<StrapiResponse<Restaurant[]>>('/categories')
+  return $fetch<StrapiResponse<Category[]>>('/categories')
 }
 
-export async function getCategoryById<
-  IncludeRestaurants extends true | false = false,
-  Response = IncludeRestaurants extends true ? RestaurantDetail : Restaurant,
->(
+export async function getCategoryById(id: number, withRestaurants?: boolean): Promise<StrapiResponse<Category>>
+export async function getCategoryById(id: number, withRestaurants: true): Promise<StrapiResponse<CategoryDetail>>
+export async function getCategoryById(
   id: number,
-  withRestaurants?: IncludeRestaurants,
+  withRestaurants = false,
 ) {
-  return await $fetch<StrapiResponse<Response>>(`/categories/${id}`, {
+  return await $fetch(`/categories/${id}`, {
     params: withRestaurants
       ? {
           populate: 'restaurants',

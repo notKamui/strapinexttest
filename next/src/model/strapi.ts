@@ -12,7 +12,7 @@ export interface StrapiEntity<T> {
   }
 }
 
-export interface StapiPagination {
+export interface StrapiPagination {
   page: number
   pageSize: number
   pageCount: number
