@@ -29,5 +29,17 @@
     "clsx",
     "cn",
     "cva"
+  ],
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "server": "localhost",
+      "port": 5432,
+      "driver": "PostgreSQL",
+      "name": "strapidb",
+      "database": "strapi",
+      "username": "strapi",
+      "password": "strapi"
+    }
   ]
 }
