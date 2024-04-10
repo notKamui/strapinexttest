@@ -24,6 +24,7 @@
   ],
   "tailwindCSS.emmetCompletions": true,
   "tailwindCSS.classAttributes": [
+    "className",
     "classnames",
     "classNames",
     "clsx",
